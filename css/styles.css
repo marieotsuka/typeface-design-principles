@@ -11,49 +11,91 @@
   --color-link: rgb(200 80 0);
   --pad: 14px;
   --pad-small: 0.3rem;
+  --pad-line: 1.25em;
   --pad: 1rem;
   --pad-section: 3rem;
-  --width-max: 800px;
-  --size-small: 1rem;
-  --size-base: 1.1rem;
-  --size-medium: 50px;
-  --size-large: 70px;
+  --width-wide: 1200px;
+  --width-content: 680px;
+  --size-small: .9rem;
+  --size-base: 1.4rem;
+  --size-medium: 46px;
+  --size-large: 65px;
   --size-xlarge: 90px;
-  --lineheight: 1.2;
+  --lineheight: 1.25;
   --wdth: 60;
   --wght: 450;
 }
 
-h1, h2, h3, h4, h5, h6, p, ol, ul, li, div {
+h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-size: var(--size-base);
 }
 
 @font-face {
-  font-family: "Caper VF";
+  font-family: "Amira";
   font-style: normal;
-  src: url(../fonts/Caper-VFVF.woff2);
+  font-weight: 400;
+  src: url(../fonts/Amira-Regular.woff2);
+}
+@font-face {
+  font-family: "Amira";
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/Amira-Italic.woff2);
+}
+@font-face {
+  font-family: "Amira";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../fonts/Amira-SemiBold.woff2);
+}
+@font-face {
+  font-family: "Amira";
+  font-style: italic;
+  font-weight: 600;
+  src: url(../fonts/Amira-SemiBoldItalic.woff2);
 }
 body {
-  font-family: "Caper VF";
-  font-variation-settings: "wdth" var(--wdth), "wght" var(--wght);
-  letter-spacing: 0.03em;
+  font-family: "Amira";
+  font-size: var(--size-base);
+  font-weight: 400;
+  letter-spacing: 0.01em;
   line-height: var(--lineheight);
 }
 
 header, footer, section {
-  max-width: var(--width-max);
+  max-width: var(--width-content);
   margin: var(--pad-section) auto;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a.anchor {
+  display: block;
+  padding-top: var(--pad);
+}
+
 h2 {
-  padding-bottom: calc(var(--pad-small) * 0.9);
+  padding: var(--pad-small) 0 calc(var(--pad-small) * 0.9);
   margin-bottom: var(--pad-small);
   border-bottom: 1px solid;
 }
 
-p {
-  margin-bottom: 1.2em;
+ul {
+  margin-bottom: var(--pad-line);
+}
+
+p + p, h3, h5 {
+  margin-top: var(--pad-line);
+}
+
+.caption, header .info, h3, h5, .schedule-header {
+  font-size: var(--size-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 li {
@@ -63,15 +105,56 @@ li:before {
   content: "—";
 }
 
-.schedule-item {
+.grid, .schedule-item {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, 1fr);
+}
+
+header .title {
+  grid-column: span 5;
+}
+header .title h1 {
+  font-size: var(--size-medium);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+header .subtitle {
+  text-indent: 0.1em;
+  margin-top: 0.2em;
+}
+header .info {
+  grid-column: span 3;
+}
+
+.schedule-item {
   border-bottom: 1px solid;
   padding: var(--pad-small) 0;
 }
+.schedule-item .date {
+  grid-column: span 2;
+}
 .schedule-item .topic {
-  grid-column: span 4;
+  grid-column: span 6;
 }
 .schedule-item p {
   margin-bottom: 0;
+}
+
+.schedule-header {
+  padding-top: 0;
+}
+
+summary {
+  cursor: pointer;
+}
+
+footer {
+  border-top: 1px solid;
+  padding: var(--pad) 0;
+}
+footer .people {
+  grid-column: span 3;
+}
+footer .colophon {
+  grid-column: span 5;
 }
