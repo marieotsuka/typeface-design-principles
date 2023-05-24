@@ -70,6 +70,7 @@ body{
 }
 header,footer,section{
 	max-width: var(--width-content);
+	width: 90%;
 	margin: var(--pad-section) auto;
 }
 a{
